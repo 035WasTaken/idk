@@ -20,18 +20,14 @@ function disableButton(button) {
     button.disabled = true;
 }
 
+
+
 window.onload = function () {
-    $( document ).ready(function() {
-        const inputField = document.getElementById("inputField");
-        const submitButton = document.getElementById("submitButton")
-        inputField.focus();
+    const inputField = document.getElementById("inputField");
+    const submitButton = document.getElementById("submitButton")
+    inputField.focus();
     
-        inputField.addEventListener("input", function() {
-            if(inputField.value.length > 0) {
-                enableButton(submitButton)
-            } else {
-                disableButton(submitButton)
-            }
-        })
+    inputField.addEventListener("input", function() {
+        inputField.value.length > 0 ? enableButton(submitButton) : disableButton(submitButton);
     })
 }
