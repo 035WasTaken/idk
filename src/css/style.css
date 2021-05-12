@@ -1,17 +1,20 @@
-#inputField {
-    font-size: 12px;
-}
-
 #submitButton {
     background-color: blue;
     color: white;
+    position: fixed;
+    top: 50%;
+    left: 63%;
+    margin-top: 0px;
+    margin-left: -100px;
+    block-size: 40px;
 }
 
-#links {
+#inputField {
     position: fixed;
-    bottom: 10px;
-    right: 20px;
-    left: 20px;
-    font-size: 12px;
-    padding: 0px;
+    top: 50%;
+    left: 50%;
+    margin-top: 0px;
+    margin-left: -100px;
+    width: 250px;
+    block-size: 40px;
 }
