@@ -13,7 +13,7 @@
 }
 
 #submitButton {
-    background-color: blue;
+    background-color: rgb(70, 70, 247);
     color: white;
     position: fixed;
     top: 50%;
@@ -35,5 +35,5 @@
 }
 
 body {
-    background-color: rgb(131, 128, 128);
+    background-color: rgb(4, 138, 135);
 }
