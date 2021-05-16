@@ -29,17 +29,18 @@ window.onload = function () {
     const urlValidateRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
     inputField.focus();
 
-    let lastClicked = 0
-
     inputField.addEventListener("input", function() {
         const val = inputField.value;
         const validated = val.match(urlValidateRegex);
-        lastClicked = !lastClicked ? Date.now() : lastClicked;
+        
+        validated ? enableButton(submitButton) : disableButton(submitButton);
     })
 
     submitButton.onclick = function() {
-       validated && Date.now() - lastClicked <= 3000 ? enableButton(submitButton) : disableButton(submitButton);
+        disableButton(submitButton);
 
-       lastClicked = Date.now();
+        setTimeout(() => {
+            enableButton(submitButton);
+        }, 3000)
     }
 }
