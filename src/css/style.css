@@ -6,9 +6,13 @@
 
 #logo {
     display: block;
+    color: black;
+    font-size: 70px;
+    font-weight: bolder;
+    text-align: center;
     margin: 0 auto;
-    margin-top: 15%;
-    width: 500px;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 #submitButton {
