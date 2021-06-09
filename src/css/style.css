@@ -5,33 +5,22 @@
 */
 
 #logo {
-    position: fixed;
-    top: 20%;
-    left: 47%;
-    margin-top: 0px;
-    margin-left: -100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15%;
+    width: 500px;
 }
 
 #submitButton {
     background-color: rgb(70, 70, 247);
     color: white;
-    position: fixed;
-    top: 50%;
-    left: 63%;
-    margin-top: 0px;
-    margin-left: -100px;
-    block-size: 40px;
     opacity: 0.3;
 }
 
-#inputField {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: 0px;
-    margin-left: -100px;
-    width: 250px;
-    block-size: 40px;
+#inputDiv {
+    display: flex;
+    width: 20em;
+    margin: 0 auto;
 }
 
 body {
