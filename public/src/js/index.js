@@ -1,3 +1,11 @@
+const xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        console.log('duhidegfeuyhrbyhrbfyhbhbhjbfbehjfbeuyrigfeuyrgfeurifheruifh')
+    }
+}
+
 function enableButton(button) {
     if(!button) {
         throw Error("Bad argument")
@@ -34,6 +42,12 @@ window.onload = function () {
 
     submitButton.onclick = function() {
         disableButton(submitButton);
+
+        xhttp.open("POST", "/v1");
+        
+        xhttp.send({
+            url: inputField.value
+        })
 
         setTimeout(() => {
             enableButton(submitButton);
