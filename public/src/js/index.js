@@ -25,32 +25,33 @@ function disableButton(button) {
 }
 
 
+const inputField = document.getElementById("inputField");
+const submitButton = document.getElementById("submitButton");
+// From the wonderous world of stackoverflow.com, weighing in at an impressive 214 bytes... I bring you, URL VALIDATIONNNNNNNNNNNNNNNNNNNNNNNNNNNN
+const urlValidateRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+inputField.focus();
 
-window.onload = function () {
-    const inputField = document.getElementById("inputField");
-    const submitButton = document.getElementById("submitButton");
-    // From the wonderous world of stackoverflow.com, weighing in at an impressive 214 bytes... I bring you, URL VALIDATIONNNNNNNNNNNNNNNNNNNNNNNNNNNN
-    const urlValidateRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
-    inputField.focus();
-
-    inputField.addEventListener("input", function() {
-        const val = inputField.value;
-        const validated = val.match(urlValidateRegex);
+inputField.addEventListener("input", function() {
+    const val = inputField.value;
+    const validated = val.match(urlValidateRegex);
         
-        validated ? enableButton(submitButton) : disableButton(submitButton);
-    })
+    validated ? enableButton(submitButton) : disableButton(submitButton);
+})
 
-    submitButton.onclick = function() {
-        disableButton(submitButton);
+submitButton.onclick = function() {
+    disableButton(submitButton);
 
-        xhttp.open("POST", "/v1");
+    xhttp.open("POST", "/html/v1.html");
+
+    xhttp.setRequestHeader('Content-Type', 'application/json')
         
-        xhttp.send({
-            url: inputField.value
-        })
+    xhttp.send(JSON.stringify({
+        url: inputField.value
+    }))
 
-        setTimeout(() => {
-            enableButton(submitButton);
-        }, 3000)
-    }
+    console.log(inputField.value);
+
+    setTimeout(() => {
+        enableButton(submitButton);
+    }, 10000)
 }
