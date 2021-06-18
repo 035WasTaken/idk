@@ -21,6 +21,12 @@
     margin: 0 auto;
 }
 
+#outputField {
+    display: flex;
+    width: 20em;
+    margin: 0 auto;
+}
+
 body {
     background-color: rgb(4, 138, 135);
 }

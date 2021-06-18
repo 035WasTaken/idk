@@ -1,9 +1,7 @@
 const xhttp = new XMLHttpRequest();
 
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        console.log('duhidegfeuyhrbyhrbfyhbhbhjbfbehjfbeuyrigfeuyrgfeurifheruifh')
-    }
+function setOutput(text, outputField) {
+    return outputField.value = text;
 }
 
 function enableButton(button) {
@@ -26,8 +24,8 @@ function disableButton(button) {
 
 
 const inputField = document.getElementById("inputField");
+const outputField = document.getElementById("outputField")
 const submitButton = document.getElementById("submitButton");
-// From the wonderous world of stackoverflow.com, weighing in at an impressive 214 bytes... I bring you, URL VALIDATIONNNNNNNNNNNNNNNNNNNNNNNNNNNN
 const urlValidateRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
 inputField.focus();
 
@@ -40,16 +38,21 @@ inputField.addEventListener("input", function() {
 
 submitButton.onclick = function() {
     disableButton(submitButton);
+    const json = JSON.stringify({ url: inputField.value });
 
     xhttp.open("POST", "/html/v1.html");
-
     xhttp.setRequestHeader('Content-Type', 'application/json')
-        
-    xhttp.send(JSON.stringify({
-        url: inputField.value
-    }))
+    xhttp.send(json);
 
-    console.log(inputField.value);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log('Received OK response from server');
+            const shortURL = JSON.parse(xhttp.response).shortURL;
+            setOutput(shortURL, outputField)
+        }
+    }
+
+    console.log(json);
 
     setTimeout(() => {
         enableButton(submitButton);

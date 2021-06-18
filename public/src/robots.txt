@@ -1,0 +1,8 @@
+# Group 1
+# Fuck you Bing, all my homies use Google
+User-agent: Bingbot
+Disallow: /
+
+# Group 2
+User-agent: *
+Allow: /
